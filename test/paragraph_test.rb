@@ -8,9 +8,4 @@ class ParagraphTest < Minitest::Test
     assert Paragraph.new
   end
 
-  def test_it_converts_paragraph_to_html
-    paragraph = Paragraph.new
-    assert_equal "<p>You just have to try the cheesecake.</p>", paragraph.convert_paragraph("You just have to try the cheesecake.")
-  end
-
 end
