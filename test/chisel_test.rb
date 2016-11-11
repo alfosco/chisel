@@ -15,26 +15,19 @@ class ChiselTest < Minitest::Test
   end
 
   def test_chisel_writes_html
-  skip
     file = Chisel.new("my_output.html", "w")
     incoming_text = file.write
     assert my_output.html != nil
   end
 
   def test_chisel_counts_input_lines
-  skip
-    file = Chisel.new("my_input.md", "r")
-    incoming_text = file.read
-    
+    file = Chisel.new 
     assert_equal 6, file.count_input_lines
   end
 
   def test_chisel_counts_output_lines
-  skip
-    file = Chisel.new("my_output.html", "w")
-    incoming_text = file.write
-    
-    assert_equal 6, file.count_output_lines
+    file = Chisel.new
+    assert_equal 8, file.count_output_lines
   end
 
 end

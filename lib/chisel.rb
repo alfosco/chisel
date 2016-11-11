@@ -1,10 +1,7 @@
+
 require './lib/converter.rb'
 
 class Chisel
-
-  def initialize
-    @converter = Converter.new
-  end
 
   def read_file
     handle = File.open(ARGV[0], "r")
@@ -13,18 +10,19 @@ class Chisel
   end
 
   def write_file
-    html_text = @converter.convert_md_to_html(@incoming_text)#put here- method that changes markdown to html
+    converter = Converter.new
+    html_text = converter.convert_md_to_html(@incoming_text)#put here- method that changes markdown to html
     writer = File.open(ARGV[1], "w")
     writer.write(html_text)
     writer.close
   end
 
   def count_input_lines
-    @input_lines = File.foreach(my_input.md).count
+    @input_lines = File.readlines(ARGV[0]).size
   end
 
   def count_output_lines
-    @output_lines = File.foreach(my_output.html).count
+    @output_lines = File.readlines(ARGV[1]).size
   end
 
   def return_message
@@ -36,4 +34,6 @@ end
 chisel = Chisel.new
 chisel.read_file
 chisel.write_file
+chisel.count_input_lines
+chisel.count_output_lines
 chisel.return_message

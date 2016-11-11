@@ -18,37 +18,26 @@ class Converter
     elsif markdown.include? "#"
       h1 = markdown.gsub(/#/, '<h1>')
       h1.insert(-1, "</h1>")
-    elsif markdown.include? "\n\n"
-      array_1 = markdown.split("\n")
-      p1 = array_1.shift
-      p2 = array_1.pop
-      p1_first = p1.insert(0, "<p>")
-      p1_final = p1_first.insert(-1, "</p>\n")
-      p2_first = p2.insert(0, "<p>")
-      p2_final = p2_first.insert(-1, "</p>")
-      p1_final + p2_final
     else
-      p_graph_first = markdown.insert(0, "<p>")
-      p_graph_last = p_graph_first.insert(-1, "</p>")
+      p_graph_first = markdown.insert(0, "<p>\n")
+      p_graph_last = p_graph_first.insert(-1, "\n</p>")
     end
   end
   
   # def convert_paragraph(markdown)
-  #   if markdown.include? "#"
-  #     markdown
-  #   elsif markdown.include? "\n\n"
-  #     array_1 = markdown.split("\n")
-  #     p1 = array_1.shift
-  #     p2 = array_1.pop
-  #     p1_first = p1.insert(0, "<p>")
-  #     p1_final = p1_first.insert(-1, "</p>\n")
-  #     p2_first = p2.insert(0, "<p>")
-  #     p2_final = p2_first.insert(-1, "</p>")
-  #     p1_final + p2_final
-  #   else
-  #     p_graph_first = markdown.insert(0, "<p>")
-  #     p_graph_last = p_graph_first.insert(-1, "</p>")
-  #   end
+    # markdown.include? "\n\n"
+    #   array_1 = markdown.split("\n\n")
+    #   p1 = array_1.shift
+    #   p2 = array_1.pop
+    #   p1_first = p1.insert(0, "<p>\n")
+    #   p1_final = p1_first.insert(-1, "\n</p>")
+    #   p2_first = p2.insert(0, "<p>\n")
+    #   p2_final = p2_first.insert(-1, "\n</p>")
+    #   p1_final + p2_final
+    # else
+    #   p_graph_first = markdown.insert(0, "<p>\n")
+    #   p_graph_last = p_graph_first.insert(-1, "\n</p>")
+    # end
   # end
 
   # def convert_header(markdown)
@@ -71,6 +60,11 @@ class Converter
   #     "#" => ["<h1>", "</h1>"],
   #   }
   # end
+
+  # def combine_p_and_h
+
+  # end
+
 
 end
 
